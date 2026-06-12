@@ -1,0 +1,50 @@
+# macOS/system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Local environment and secret config
+.env
+.env.*
+!.env.example
+*.local.php
+Login_FAQs/api/config.local.php
+DatabaseInit.local.php
+
+# Logs, temporary files, and local runtime state
+*.log
+logs/
+temp.*
+tmp/
+old/
+.omx/
+.agent/
+
+# PHP dependencies
+vendor/
+composer.phar
+
+# Node dependencies/build output, if tooling is added later
+node_modules/
+dist/
+build/
+
+# User-generated uploads
+Profile/uploads/*
+!Profile/uploads/.gitkeep
+
+# Merge/conflict artifacts
+MERGE_MSG
+*/MERGE_MSG
+*.orig
+
+# Old local copies
+home_page

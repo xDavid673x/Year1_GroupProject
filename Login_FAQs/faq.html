@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gym FAQ</title>
+  <link rel="stylesheet" href="../global.css" />
+  <link rel="stylesheet" href="styles.css?v=27" />
+</head>
+<body class="dashboard-page has-floating-header faq-page">
+  <header class="floating-header">
+      <div class="nav-shell">
+          <a href="../homepage/homepage.html" class="brand" aria-label="Go to Motiv8 homepage">
+              <img src="../img/edited-photo-Photoroom.png" alt="Motiv8 logo" class="brand-logo">
+          </a>
+
+          <div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-controls="mainNav" aria-expanded="false">&#9776;</div>
+
+          <nav class="floating-nav" aria-label="Main navigation" id="mainNav">
+              <a href="../homepage/homepage.html" class="nav-item">Home</a>
+              <a href="../Videos/videos.html" class="nav-item">Videos</a>
+              <a href="../Gym_Locator/gym_locator.html" class="nav-item">Gym Locator</a>
+              <a href="../Profile/profile.php" class="nav-item">Profile</a>
+              <a href="../Login_FAQs/faq.html" class="nav-item active">FAQ</a>
+              <a href="../Login_FAQs/gemini.html" class="nav-item">Gemini</a>
+              <a href="../Login_FAQs/leaderboard.php" class="nav-item">Leaderboard</a>
+          </nav>
+
+          <div class="nav-cta">
+              <a href="../Login_FAQs/login.html" class="login-btn">Log In / Sign Up</a>
+          </div>
+      </div>
+  </header>
+
+  <div class="faq-hero-decor" aria-hidden="true">
+    <div class="hero-overlay"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+  </div>
+
+  <main class="faq-main">
+    <h1 class="faq-title">
+      Frequently Asked
+      <span>Questions</span>
+    </h1>
+    <div class="faq-search-wrap">
+      <label for="faq-search" class="faq-search-label">Search questions</label>
+      <div class="faq-search-field">
+        <input
+          id="faq-search"
+          type="search"
+          class="faq-search-input"
+          placeholder="Search by keyword (e.g., password, account)"
+          autocomplete="off"
+        />
+      </div>
+    </div>
+
+    <p id="faq-no-results" class="faq-no-results" hidden>No matching questions found.</p>
+
+    <section class="faq-leaderboard-widget" aria-labelledby="faq-leaderboard-title">
+      <div class="faq-widget-head">
+        <div>
+          <p class="faq-widget-kicker">Live momentum</p>
+          <h2 id="faq-leaderboard-title">Top Athletes This Week</h2>
+          <p class="faq-widget-subtitle">A quick snapshot of who is putting in the work right now.</p>
+        </div>
+        <a href="../Login_FAQs/leaderboard.php" class="faq-widget-link">Open Full Leaderboard</a>
+      </div>
+
+      <p class="faq-widget-range" id="faq-widget-range">Loading current rankings...</p>
+
+      <div class="faq-widget-list" id="faq-widget-list">
+        <article class="faq-widget-entry faq-widget-entry-loading">
+          <span class="faq-widget-rank">--</span>
+          <div class="faq-widget-copy">
+            <strong>Loading leaderboard...</strong>
+            <span>Pulling the latest weekly rankings.</span>
+          </div>
+          <span class="faq-widget-score">--</span>
+        </article>
+      </div>
+    </section>
+
+    <div id="faq-container">
+      <p style="text-align: center; color: var(--muted); margin-top: 20px;">Loading FAQs...</p>
+    </div>
+  </main>
+
+  <script src="../global-auth.js"></script>
+  <script>
+const searchInput = document.getElementById("faq-search");
+    const noResults = document.getElementById("faq-no-results");
+    let faqItems = [];
+    const faqContainer = document.getElementById("faq-container");
+    const widgetRange = document.getElementById("faq-widget-range");
+    const widgetList = document.getElementById("faq-widget-list");
+
+    function filterFaqItems(keyword) {
+      const normalized = keyword.trim().toLowerCase();
+      let visibleCount = 0;
+
+      faqItems.forEach((item) => {
+        const question = item.querySelector("summary")?.textContent?.toLowerCase() ?? "";
+        const matches = question.includes(normalized);
+
+        item.hidden = !matches;
+        if (matches) {
+          visibleCount += 1;
+        }
+      });
+
+      noResults.hidden = visibleCount > 0;
+    }
+
+    searchInput.addEventListener("input", (event) => {
+      filterFaqItems(event.target.value);
+    });
+
+    async function loadLeaderboardWidget() {
+      if (!widgetRange || !widgetList) {
+        return;
+      }
+
+      try {
+        const response = await fetch("api/leaderboard_summary.php", {
+          headers: { Accept: "application/json" },
+        });
+        const payload = await response.json();
+
+        if (!response.ok || !payload.ok || !Array.isArray(payload.leaders)) {
+          throw new Error("Widget data unavailable");
+        }
+
+        widgetRange.textContent = payload.range_label || "This week";
+
+        if (payload.leaders.length === 0) {
+          widgetList.innerHTML = `
+            <article class="faq-widget-entry faq-widget-entry-empty">
+              <span class="faq-widget-rank">--</span>
+              <div class="faq-widget-copy">
+                <strong>No ranked workouts yet</strong>
+                <span>Be the first to log a workout this week.</span>
+              </div>
+              <span class="faq-widget-score">0</span>
+            </article>
+          `;
+          return;
+        }
+
+        widgetList.innerHTML = payload.leaders.map((leader) => `
+          <article class="faq-widget-entry">
+            <span class="faq-widget-rank">#${leader.rank}</span>
+            <div class="faq-widget-copy">
+              <strong>${leader.display_name}</strong>
+              <span>@${leader.username} • ${leader.workouts_count} workouts</span>
+            </div>
+            <span class="faq-widget-score">${leader.score}</span>
+          </article>
+        `).join("");
+      } catch (error) {
+        widgetRange.textContent = "This week";
+        widgetList.innerHTML = `
+          <article class="faq-widget-entry faq-widget-entry-empty">
+            <span class="faq-widget-rank">!</span>
+            <div class="faq-widget-copy">
+              <strong>Leaderboard unavailable</strong>
+              <span>Open the full page to try again later.</span>
+            </div>
+            <span class="faq-widget-score">--</span>
+          </article>
+        `;
+      }
+    }
+
+    async function loadFaqs() {
+      try {
+        const response = await fetch("api/get_faqs.php");
+        const data = await response.json();
+        
+        if (data.ok && data.faqs && data.faqs.length > 0) {
+          faqContainer.innerHTML = data.faqs.map((faq, index) => `
+            <details class="faq-item" ${index === 0 ? 'open' : ''}>
+              <summary>${faq.question}</summary>
+              <p>${faq.answer}</p>
+            </details>
+          `).join('');
+          
+          faqItems = Array.from(document.querySelectorAll(".faq-item"));
+          filterFaqItems(searchInput.value);
+        } else {
+          faqContainer.innerHTML = '<p style="text-align: center; color: var(--muted); margin-top: 20px;">No FAQs available.</p>';
+        }
+      } catch (error) {
+        faqContainer.innerHTML = '<p style="text-align: center; color: var(--danger); margin-top: 20px;">Failed to load FAQs.</p>';
+      }
+    }
+
+    loadLeaderboardWidget();
+    loadFaqs();
+  </script>
+</body>
+</html>

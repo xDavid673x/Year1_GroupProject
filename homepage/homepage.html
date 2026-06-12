@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motiv8 | Home</title>
+    <meta name="description" content="Motiv8 helps users stay consistent, discover fitness resources, and turn motivation into results.">
+    <meta name="keywords" content="Motiv8, fitness, gym, workout, exercise, gym locator, profile, videos">
+    <meta name="author" content="Motiv8 Team">
+
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="styles.css?v=2">
+
+    <link rel="icon" type="image/png" href="img/favicon.jpg">
+</head>
+<body>
+
+    <!-- =========================================================
+         FLOATING HEADER
+         ========================================================= -->
+    <header class="floating-header">
+        <div class="nav-shell">
+            <a href="homepage.html" class="brand" aria-label="Go to Motiv8 homepage">
+                <img src="img/edited-photo-Photoroom.png" alt="Motiv8 logo" class="brand-logo">
+            </a>
+
+            <div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-controls="mainNav" aria-expanded="false">&#9776;</div>
+
+            <nav class="floating-nav" aria-label="Main navigation" id="mainNav">
+                <a href="../homepage/homepage.html" class="nav-item active">Home</a>
+                <a href="../Videos/videos.html" class="nav-item">Videos</a>
+                <a href="../Gym_Locator/gym_locator.html" class="nav-item">Gym Locator</a>
+                <a href="../Profile/profile.php" class="nav-item">Profile</a>
+                <a href="../Login_FAQs/faq.html" class="nav-item">FAQ</a>
+                <a href="../Login_FAQs/gemini.html" class="nav-item">Gemini</a>
+                <a href="../Login_FAQs/leaderboard.php" class="nav-item">Leaderboard</a>
+            </nav>
+
+            <div class="nav-cta">
+                <a href="../Login_FAQs/login.html" class="login-btn">Log In / Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================================================
+         MAIN CONTENT
+         ========================================================= -->
+    <main>
+
+        <!-- =====================================================
+             HERO SECTION
+             ===================================================== -->
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-orb hero-orb-3"></div>
+
+            <div class="hero-content">
+                <p class="hero-kicker">Train smarter. Stay consistent. Progress with purpose.</p>
+
+                <h1 class="hero-title">
+                    Where motivation
+                    <span>turns into results</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Motiv8 is designed to help you stay focused on your fitness journey,
+                    discover useful resources, and access the tools you need in one clear
+                    and motivating platform.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#features" class="primary-btn">Explore Features</a>
+                    <a href="../Login_FAQs/login.html" class="secondary-btn">Get Started</a>
+                </div>
+
+                <div class="hero-trust-row" aria-label="Platform highlights">
+                    <div class="hero-trust-item">
+                        <span class="hero-trust-number">4</span>
+                        <span class="hero-trust-label">Core Tools</span>
+                    </div>
+
+                    <div class="hero-trust-item">
+                        <span class="hero-trust-number">24/7</span>
+                        <span class="hero-trust-label">Easy Access</span>
+                    </div>
+
+                    <div class="hero-trust-item">
+                        <span class="hero-trust-number">1</span>
+                        <span class="hero-trust-label">Connected Platform</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             QUICK STATS
+             ===================================================== -->
+        <section class="stats-section" aria-label="Quick platform stats">
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-icon" aria-hidden="true">⚡</div>
+                    <h2 class="stat-value">Fast</h2>
+                    <p class="stat-text">
+                        Access every important section of the platform with a clear and
+                        intuitive navigation experience.
+                    </p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-icon" aria-hidden="true">🎯</div>
+                    <h2 class="stat-value">Focused</h2>
+                    <p class="stat-text">
+                        Built to keep users on track and reduce distractions during their
+                        fitness journey.
+                    </p>
+                </article>
+
+                <article class="stat-card">
+                    <div class="stat-icon" aria-hidden="true">📈</div>
+                    <h2 class="stat-value">Motivating</h2>
+                    <p class="stat-text">
+                        The design encourages action, consistency, and a better experience
+                        across the app.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="leaderboard-widget-section" aria-labelledby="leaderboardWidgetTitle">
+            <div class="leaderboard-widget-shell">
+                <div class="leaderboard-widget-copy">
+                    <p class="section-kicker">Community momentum</p>
+                    <h2 class="section-title" id="leaderboardWidgetTitle">Top Athletes This Week</h2>
+                    <p class="section-subtitle">
+                        A quick snapshot of the members putting in the most consistent work this week.
+                        Scores combine logged workouts, valid sets, cardio minutes, and lifting volume.
+                    </p>
+                    <div class="leaderboard-widget-meta">
+                        <span class="leaderboard-widget-badge" id="leaderboardRangeLabel">Loading current range...</span>
+                    </div>
+                </div>
+
+                <div class="leaderboard-widget-card">
+                    <div class="leaderboard-widget-head">
+                        <p class="leaderboard-widget-kicker">Weekly rankings</p>
+                        <span class="leaderboard-widget-caption">Live from tracked workouts</span>
+                    </div>
+
+                    <div class="leaderboard-widget-list" id="leaderboardWidgetList" aria-live="polite">
+                        <article class="leaderboard-widget-item is-loading">
+                            <div class="leaderboard-widget-rank">--</div>
+                            <div class="leaderboard-widget-user">
+                                <strong>Loading leaderboard...</strong>
+                                <span>Fetching current standings</span>
+                            </div>
+                            <div class="leaderboard-widget-score">--</div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             FEATURES INTRO
+             ===================================================== -->
+        <section class="feature-section" id="features">
+            <div class="section-heading">
+                <p class="section-kicker">Everything in one place</p>
+                <h2 class="section-title">Main Features</h2>
+                <p class="section-subtitle">
+                    Explore the key areas of Motiv8 and move through the platform
+                    with ease. Every section is designed to support your goals.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+                <a class="feature-card" href="../Profile/profile.php">
+                    <div class="feature-icon" aria-hidden="true">👤</div>
+                    <h3>Profile</h3>
+                    <p>
+                        Manage your account details, build your identity on the platform,
+                        and keep your experience personalised.
+                    </p>
+                    <span class="feature-link">Open Profile</span>
+                </a>
+
+                <a class="feature-card" href="../Videos/videos.html">
+                    <div class="feature-icon" aria-hidden="true">🎥</div>
+                    <h3>Videos</h3>
+                    <p>
+                        Browse video content, explore guidance, and discover helpful
+                        workout material that keeps you engaged.
+                    </p>
+                    <span class="feature-link">Watch Videos</span>
+                </a>
+
+                <a class="feature-card" href="../Gym_Locator/gym_locator.html">
+                    <div class="feature-icon" aria-hidden="true">📍</div>
+                    <h3>Gym Locator</h3>
+                    <p>
+                        Find nearby gyms, explore local training options, and make your
+                        next session easier to plan.
+                    </p>
+                    <span class="feature-link">Find Gyms</span>
+                </a>
+
+                <a class="feature-card" href="../Login_FAQs/faq.html">
+                    <div class="feature-icon" aria-hidden="true">❓</div>
+                    <h3>FAQ</h3>
+                    <p>
+                        Get quick answers to common questions and understand the platform
+                        without wasting time.
+                    </p>
+                    <span class="feature-link">Read FAQ</span>
+                </a>
+            </div>
+        </section>
+
+        <section id="exercise-tracker" class="exercise-launch-section" aria-labelledby="exerciseLaunchTitle">
+            <div class="exercise-launch-shell">
+                <div class="exercise-launch-copy">
+                    <p class="section-kicker">Track your progress</p>
+                    <h2 class="section-title" id="exerciseLaunchTitle">Exercise Tracker</h2>
+                    <p class="section-subtitle">
+                        Log your workout in a few seconds, organise your session, and keep your
+                        fitness progress structured in one place.
+                    </p>
+
+                    <div class="exercise-launch-points">
+                        <span class="exercise-launch-pill">Custom exercises</span>
+                        <span class="exercise-launch-pill">Sets and reps</span>
+                        <span class="exercise-launch-pill">Cardio and duration</span>
+                        <span class="exercise-launch-pill">Saved workouts</span>
+                    </div>
+                </div>
+
+                <div class="exercise-launch-card">
+                    <div class="exercise-launch-card-head">
+                        <div class="exercise-launch-card-heading">
+                            <p class="exercise-launch-card-kicker">Quick start</p>
+                            <h3>Start a new workout</h3>
+                        </div>
+                        <button
+                            type="button"
+                            class="exercise-launch-lock-badge"
+                            id="exerciseLaunchLockBadge"
+                            hidden
+                            aria-haspopup="dialog"
+                            aria-expanded="false"
+                            aria-controls="exerciseLaunchGate"
+                        >
+                            Locked
+                        </button>
+                    </div>
+
+                    <div class="exercise-launch-gate" id="exerciseLaunchGate" hidden>
+                        <p class="exercise-launch-gate-kicker">Members only</p>
+                        <h4>Log in to track workouts and save progress</h4>
+                        <p>
+                            Your sessions, saved workouts, and progress history are available once
+                            you sign in.
+                        </p>
+                        <div class="exercise-launch-gate-actions">
+                            <a href="../Login_FAQs/login.html" class="exercise-launch-gate-btn">Go to Login</a>
+                        </div>
+                    </div>
+
+                    <form
+                        class="exercise-launch-form"
+                        id="exerciseLaunchForm"
+                        action="../Exercise_Tracker/exerciseTracker.php"
+                        method="post"
+                    >
+                        <div class="exercise-launch-field">
+                            <label for="workout-date">Workout date</label>
+                            <input type="date" id="workout-date" name="date" required>
+                        </div>
+
+                        <div class="exercise-launch-field">
+                            <label for="workout-time">Workout time</label>
+                            <input type="time" id="workout-time" name="time" required>
+                        </div>
+
+                        <div class="exercise-launch-field">
+                            <label for="workout-type">Workout type</label>
+                            <select id="workout-type" name="workout-type" required>
+                                <option value="">Choose workout type</option>
+                                <option value="Weight Training">Weight Training</option>
+                                <option value="HIIT">HIIT</option>
+                                <option value="Flexibility">Flexibility</option>
+                                <option value="Cardio">Cardio</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="exercise-launch-btn">Start Tracking</button>
+                    </form>
+
+                    <a href="../Exercise_Tracker/viewWorkouts.php" class="exercise-launch-secondary" id="exerciseLaunchSecondary">
+                        View saved workouts
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             JOURNEY SECTION
+             ===================================================== -->
+        <section class="journey-section" aria-label="Fitness journey overview">
+            <div class="journey-shell">
+                <div class="journey-heading">
+                    <p class="section-kicker">Your journey</p>
+                    <h2 class="section-title">Move from intention to action</h2>
+                    <p class="section-subtitle">
+                        Motiv8 supports each stage of the user journey by giving direct
+                        access to the right features at the right time.
+                    </p>
+                </div>
+
+                <div class="journey-timeline">
+                    <article class="journey-step">
+                        <div class="journey-step-number">01</div>
+                        <h3>Join the platform</h3>
+                        <p>
+                            Start by logging in or signing up to access the full Motiv8 experience.
+                        </p>
+                    </article>
+
+                    <article class="journey-step">
+                        <div class="journey-step-number">02</div>
+                        <h3>Explore resources</h3>
+                        <p>
+                            Discover useful videos, learn from content, and understand the available tools.
+                        </p>
+                    </article>
+
+                    <article class="journey-step">
+                        <div class="journey-step-number">03</div>
+                        <h3>Plan your activity</h3>
+                        <p>
+                            Use the gym locator and profile areas to structure your next steps.
+                        </p>
+                    </article>
+
+                    <article class="journey-step">
+                        <div class="journey-step-number">04</div>
+                        <h3>Stay consistent</h3>
+                        <p>
+                            Keep coming back to the platform to stay motivated and connected to your goals.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================
+             CONTACT SECTION
+             ===================================================== -->
+        <section class="contact-info-section" id="contact">
+            <div class="contact-wrap">
+                <div class="contact-card">
+                    <div class="contact-heading">
+                        <p class="contact-kicker">Get in touch</p>
+                        <h2 class="contact-us-title">Contact Us</h2>
+                        <p class="contact-intro">
+                            Have a question, suggestion, or issue? Send us a message and our team
+                            will be happy to hear from you.
+                        </p>
+                    </div>
+
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row two-columns">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input id="name" name="name" type="text" placeholder="Enter your full name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input id="email" name="email" type="email" placeholder="Enter your email address" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input id="subject" name="subject" type="text" placeholder="What would you like to talk about?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+                        </div>
+
+                        <div class="form-footer">
+                            <p class="form-note">We usually respond as soon as possible.</p>
+                            <button type="submit" class="contact-btn">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 MOTIV8. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- =========================================================
+         BASIC INTERACTION
+         ========================================================= -->
+    <script>
+const contactForm = document.getElementById("contactForm");
+        const leaderboardWidgetList = document.getElementById("leaderboardWidgetList");
+        const leaderboardRangeLabel = document.getElementById("leaderboardRangeLabel");
+
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#39;");
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                alert("Message sent!");
+                contactForm.reset();
+            });
+        }
+
+        if (leaderboardWidgetList && leaderboardRangeLabel) {
+            fetch("../Login_FAQs/api/leaderboard_summary.php")
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Leaderboard request failed.");
+                    }
+                    return response.json();
+                })
+                .then((payload) => {
+                    if (!payload.ok || !Array.isArray(payload.leaders)) {
+                        throw new Error(payload.error || "Leaderboard data is unavailable.");
+                    }
+
+                    leaderboardRangeLabel.textContent = payload.range_label
+                        ? `Range: ${payload.range_label}`
+                        : "This week";
+
+                    if (!payload.leaders.length) {
+                        leaderboardWidgetList.innerHTML = `
+                            <article class="leaderboard-widget-empty">
+                                <h3>No ranked workouts yet</h3>
+                                <p>Once members log workouts this week, the leaderboard will appear here.</p>
+                            </article>
+                        `;
+                        return;
+                    }
+
+                    leaderboardWidgetList.innerHTML = payload.leaders.map((leader) => `
+                        <article class="leaderboard-widget-item">
+                            <div class="leaderboard-widget-rank">#${escapeHtml(leader.rank)}</div>
+                            <div class="leaderboard-widget-user">
+                                <strong>${escapeHtml(leader.display_name)}</strong>
+                                <span>@${escapeHtml(leader.username)} · ${escapeHtml(leader.workouts_count)} workouts · ${escapeHtml(leader.valid_sets)} sets</span>
+                            </div>
+                            <div class="leaderboard-widget-score">${escapeHtml(leader.score)}</div>
+                        </article>
+                    `).join("");
+                })
+                .catch(() => {
+                    leaderboardRangeLabel.textContent = "Weekly ranking";
+                    leaderboardWidgetList.innerHTML = `
+                        <article class="leaderboard-widget-empty">
+                            <h3>Leaderboard unavailable</h3>
+                            <p>Leaderboard data could not be loaded right now.</p>
+                        </article>
+                    `;
+                });
+        }
+
+        const workoutDateInput = document.getElementById("workout-date");
+        const workoutTimeInput = document.getElementById("workout-time");
+        const exerciseLaunchSection = document.getElementById("exercise-tracker");
+        const exerciseLaunchCard = exerciseLaunchSection?.querySelector(".exercise-launch-card");
+        const exerciseLaunchForm = document.getElementById("exerciseLaunchForm");
+        const exerciseLaunchSecondary = document.getElementById("exerciseLaunchSecondary");
+        const exerciseLaunchLockBadge = document.getElementById("exerciseLaunchLockBadge");
+        const exerciseLaunchGate = document.getElementById("exerciseLaunchGate");
+        const exerciseLaunchFields = exerciseLaunchForm
+            ? Array.from(exerciseLaunchForm.querySelectorAll("input, select"))
+            : [];
+
+        function closeExerciseLaunchGate() {
+            if (!exerciseLaunchGate || !exerciseLaunchLockBadge) return;
+            exerciseLaunchGate.hidden = true;
+            exerciseLaunchLockBadge.setAttribute("aria-expanded", "false");
+        }
+
+        function openExerciseLaunchGate() {
+            if (!exerciseLaunchGate || !exerciseLaunchLockBadge) return;
+            exerciseLaunchGate.hidden = false;
+            exerciseLaunchLockBadge.removeAttribute("hidden");
+            exerciseLaunchLockBadge.setAttribute("aria-expanded", "true");
+        }
+
+        function setExerciseLaunchLocked(isLocked) {
+            if (!exerciseLaunchCard || !exerciseLaunchLockBadge || !exerciseLaunchForm || !exerciseLaunchSecondary) {
+                return;
+            }
+
+            exerciseLaunchCard.classList.toggle("is-locked", isLocked);
+            exerciseLaunchLockBadge.hidden = !isLocked;
+
+            exerciseLaunchFields.forEach((field) => {
+                if (field === exerciseLaunchLockBadge) return;
+                field.disabled = isLocked;
+            });
+
+            if (!isLocked) {
+                closeExerciseLaunchGate();
+            }
+        }
+
+        if (workoutDateInput && workoutTimeInput) {
+            const now = new Date();
+            const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+
+            workoutDateInput.value = localDate.toISOString().slice(0, 10);
+            workoutTimeInput.value = localDate.toTimeString().slice(0, 5);
+        }
+
+        if (exerciseLaunchLockBadge) {
+            exerciseLaunchLockBadge.addEventListener("click", () => {
+                if (exerciseLaunchGate?.hidden) {
+                    openExerciseLaunchGate();
+                    return;
+                }
+                closeExerciseLaunchGate();
+            });
+        }
+
+        if (exerciseLaunchForm) {
+            exerciseLaunchForm.addEventListener("submit", (event) => {
+                if (!exerciseLaunchCard?.classList.contains("is-locked")) return;
+                event.preventDefault();
+                openExerciseLaunchGate();
+            });
+        }
+
+        if (exerciseLaunchSecondary) {
+            exerciseLaunchSecondary.addEventListener("click", (event) => {
+                if (!exerciseLaunchCard?.classList.contains("is-locked")) return;
+                event.preventDefault();
+                openExerciseLaunchGate();
+            });
+        }
+
+        if (exerciseLaunchCard) {
+            exerciseLaunchCard.addEventListener("click", (event) => {
+                if (!exerciseLaunchCard.classList.contains("is-locked")) return;
+                if (exerciseLaunchGate?.contains(event.target) || exerciseLaunchLockBadge?.contains(event.target)) {
+                    return;
+                }
+                openExerciseLaunchGate();
+            });
+        }
+
+        document.addEventListener("click", (event) => {
+            if (
+                !exerciseLaunchGate ||
+                exerciseLaunchGate.hidden ||
+                !exerciseLaunchSection ||
+                exerciseLaunchSection.contains(event.target)
+            ) {
+                return;
+            }
+            closeExerciseLaunchGate();
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeExerciseLaunchGate();
+            }
+        });
+
+        setExerciseLaunchLocked(true);
+
+        fetch("../Login_FAQs/api/me.php", {
+            method: "GET",
+            credentials: "include",
+            headers: { Accept: "application/json" },
+        })
+            .then(async (response) => {
+                let payload = {};
+                try {
+                    payload = await response.json();
+                } catch {
+                    payload = {};
+                }
+                return { ok: response.ok, payload };
+            })
+            .then(({ ok, payload }) => {
+                setExerciseLaunchLocked(!ok || !payload.authenticated);
+            })
+            .catch(() => {
+                setExerciseLaunchLocked(true);
+            });
+    </script>
+    <script src="../global-auth.js"></script>
+    
+
+</body>
+</html>

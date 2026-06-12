@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gym Login</title>
+  <link rel="stylesheet" href="../global.css" />
+  <link rel="stylesheet" href="styles.css?v=26" />
+</head>
+<body class="auth-page has-floating-header login-page">
+  <header class="floating-header">
+      <div class="nav-shell">
+          <a href="../homepage/homepage.html" class="brand" aria-label="Go to Motiv8 homepage">
+              <img src="../img/edited-photo-Photoroom.png" alt="Motiv8 logo" class="brand-logo">
+          </a>
+
+          <div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-controls="mainNav" aria-expanded="false">&#9776;</div>
+
+          <nav class="floating-nav" aria-label="Main navigation" id="mainNav">
+              <a href="../homepage/homepage.html" class="nav-item">Home</a>
+              <a href="../Videos/videos.html" class="nav-item">Videos</a>
+              <a href="../Gym_Locator/gym_locator.html" class="nav-item">Gym Locator</a>
+              <a href="../Profile/profile.php" class="nav-item">Profile</a>
+              <a href="../Login_FAQs/faq.html" class="nav-item">FAQ</a>
+              <a href="../Login_FAQs/gemini.html" class="nav-item">Gemini</a>
+              <a href="../Login_FAQs/leaderboard.php" class="nav-item">Leaderboard</a>
+          </nav>
+
+          <div class="nav-cta">
+              <a href="../Login_FAQs/login.html" class="login-btn">Log In / Sign Up</a>
+          </div>
+      </div>
+  </header>
+
+  <div class="faq-hero-decor" aria-hidden="true">
+    <div class="hero-overlay"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+  </div>
+
+  <main class="auth-container">
+    <section class="auth-card" aria-labelledby="login-title">
+      <img src="../img/edited-photo-Photoroom.png" alt="Gym logo" class="auth-logo" />
+      <h1 id="login-title">Welcome Back</h1>
+      <p class="auth-subtitle">Log in or create your account</p>
+
+      <div class="auth-tabs" role="tablist" aria-label="Authentication forms">
+        <button id="tab-login" class="auth-tab active" type="button" role="tab" aria-selected="true">Log In</button>
+        <button id="tab-signup" class="auth-tab" type="button" role="tab" aria-selected="false">Create Account</button>
+      </div>
+
+      <form id="login-form" class="auth-form auth-form-panel" novalidate>
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="username" required />
+
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input id="password" name="password" type="password" autocomplete="current-password" required />
+          <button type="button" class="toggle-password" aria-label="Show password">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+        </div>
+
+        <p id="login-message" class="auth-message" aria-live="polite"></p>
+
+        <button type="submit" class="auth-btn">Log In</button>
+      </form>
+
+      <form id="signup-form" class="auth-form auth-form-panel hidden" novalidate>
+        <label for="signup-name">Username</label>
+        <input id="signup-name" name="signup-name" type="text" autocomplete="name" required />
+
+        <label for="signup-email">Email</label>
+        <input id="signup-email" name="signup-email" type="email" autocomplete="email" required />
+
+        <label for="signup-phone">Phone Number</label>
+        <input id="signup-phone" name="signup-phone" type="tel" autocomplete="tel" required />
+
+        <label for="signup-password">Password</label>
+        <div class="password-wrapper">
+          <input id="signup-password" name="signup-password" type="password" autocomplete="new-password" required />
+          <button type="button" class="toggle-password" aria-label="Show password">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+        </div>
+
+        <label for="signup-confirm-password">Confirm Password</label>
+        <div class="password-wrapper">
+          <input id="signup-confirm-password" name="signup-confirm-password" type="password" autocomplete="new-password" required />
+          <button type="button" class="toggle-password" aria-label="Show password">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+        </div>
+
+        <p id="signup-message" class="auth-message" aria-live="polite"></p>
+
+        <button type="submit" class="auth-btn">Create Account</button>
+      </form>
+
+      <p class="auth-hint">Your account is stored in MySQL. Create one if you are new.</p>
+    </section>
+  </main>
+
+  <script>
+</script>
+  <script src="../global-auth.js"></script>
+</body>
+</html>

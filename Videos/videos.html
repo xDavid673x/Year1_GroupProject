@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motiv8 | Videos</title>
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="video-styles.css?v=3">
+    <link rel="icon" href="../homepage/img/favicon.jpg">
+</head>
+<body>
+
+    <header class="floating-header">
+        <div class="nav-shell">
+            <a href="../homepage/homepage.html" class="brand" aria-label="Go to Motiv8 homepage">
+                <img src="../img/edited-photo-Photoroom.png" alt="Gym logo" class="brand-logo" />
+            </a>
+
+            <div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-controls="mainNav" aria-expanded="false">&#9776;</div>
+
+            <nav class="floating-nav" aria-label="Main navigation" id="mainNav">
+                <a href="../homepage/homepage.html" class="nav-item">Home</a>
+                <a href="../Videos/videos.html" class="nav-item active">Videos</a>
+                <a href="../Gym_Locator/gym_locator.html" class="nav-item">Gym Locator</a>
+                <a href="../Profile/profile.php" class="nav-item">Profile</a>
+                <a href="../Login_FAQs/faq.html" class="nav-item">FAQ</a>
+                <a href="../Login_FAQs/gemini.html" class="nav-item">Gemini</a>
+                <a href="../Login_FAQs/leaderboard.php" class="nav-item">Leaderboard</a>
+            </nav>
+
+            <div class="nav-cta">
+                <a href="../Login_FAQs/login.html" class="login-btn">Log In / Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="faq-hero-decor" aria-hidden="true">
+        <div class="hero-overlay"></div>
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+    </div>
+
+    <main class="videos-page">
+        <h1>Video tutorials</h1>
+
+        <div class="filter-container">
+            <select id="exerciseFilter">
+                <option value="All">All</option>
+                <option value="Bodyweight">Bodyweight</option>
+                <option value="Strength">Strength</option>
+                <option value="Core">Core</option>
+                <option value="HIIT">HIIT</option>
+                <option value="Flexibility">Flexibility</option>
+            </select>
+
+            <select id="strengthFilter" style="display: none;">
+                <option value="All">All</option>
+                <option value="Arms">Biceps</option>
+                <option value="Back">Back</option>
+                <option value="Chest">Chest</option>
+                <option value="Legs">Legs</option>
+                <option value="Shoulders">Shoulders</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <!-- Bodyweight Exercises -->
+        <div class="exercise" data-type="Bodyweight">
+            <h2>Push Up</h2>
+            <p>Bodyweight: Upper body pushing exercise targeting chest, shoulders, and triceps</p>
+            <p class="tutorial">Keep your core tight, lower your chest to the floor, and push back up smoothly.</p>
+            <video controls>
+                <source src="videos/push_up.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Bodyweight">
+            <h2>Pull Up</h2>
+            <p>Bodyweight: Upper body pulling exercise targeting back and biceps</p>
+            <p class="tutorial">Hang from the bar with shoulders engaged, pull your chin above the bar, then lower slowly.</p>
+            <video controls>
+                <source src="videos/pull_up.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Bodyweight">
+            <h2>Tricep Dip</h2>
+            <p>Bodyweight: Upper body pushing exercise targeting triceps and shoulders</p>
+            <p class="tutorial">Keep your elbows close to your body, lower until arms are 90 degrees, then push back up.</p>
+            <video controls>
+                <source src="videos/tricep_dip.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Bodyweight">
+            <h2>Glute Bridge</h2>
+            <p>Bodyweight: Hip extension exercise targeting glutes and lower back</p>
+            <p class="tutorial">Lie on your back, bend knees, push hips up while squeezing glutes, lower slowly.</p>
+            <video controls>
+                <source src="videos/glute_bridge.mp4" type="video/mp4">
+            </video>
+        </div>
+
+      
+
+        <div class="exercise" data-type="Bodyweight">
+            <h2>Side Kick</h2>
+            <p>Bodyweight: Leg exercise targeting glutes, hips, and balance</p>
+            <p class="tutorial">Lift leg to the side slowly, control movement, alternate legs.</p>
+            <video controls>
+                <source src="videos/side_kick.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Bodyweight">
+            <h2>Step Up</h2>
+            <p>Bodyweight: Leg exercise using elevated surface to strengthen quads and glutes</p>
+            <p class="tutorial">Step onto a bench, push through the heel, step back down with control.</p>
+            <video controls>
+                <source src="videos/step_up.mp4" type="video/mp4">
+            </video>
+        </div>
+
+       
+
+        <!-- Strength Exercises -->
+        <div class="exercise" data-type="Strength" data-group="Legs">
+            <h2>Squat</h2>
+            <p>Strength: Lower body compound exercise targeting quads, glutes, and hamstrings</p>
+            <p class="tutorial">Keep chest up, push hips back, lower until thighs parallel to the floor.</p>
+            <video controls>
+                <source src="videos/squat.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Legs">
+            <h2>Lunge</h2>
+            <p>Strength: Unilateral leg exercise targeting quads, glutes, and balance</p>
+            <p class="tutorial">Step forward, lower back knee toward floor, push back to standing keeping torso upright.</p>
+            <video controls>
+                <source src="videos/lunge.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Other">
+            <h2>Deadlift</h2>
+            <p>Strength: Full body compound lift targeting posterior chain muscles</p>
+            <p class="tutorial">Hinge at hips, keep back straight, lift bar engaging glutes and hamstrings, lower slowly.</p>
+            <video controls>
+                <source src="videos/deadlift.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Chest">
+            <h2>Bench Press</h2>
+            <p>Strength: Upper body pushing exercise targeting chest, shoulders, and triceps</p>
+            <p class="tutorial">Feet on floor, lower bar to chest, push back up keeping elbows slightly tucked.</p>
+            <video controls>
+                <source src="videos/bench_press.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Arms">
+            <h2>Bicep Curl</h2>
+            <p>Strength: Isolation exercise targeting biceps muscles</p>
+            <p class="tutorial">Keep elbows close to sides, curl weight smoothly, lower slowly without swinging.</p>
+            <video controls>
+                <source src="videos/bicep_curl.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Legs">
+            <h2>Side Lunge</h2>
+            <p>Strength: Lower body unilateral exercise targeting adductors and glutes</p>
+            <p class="tutorial">Step sideways, bend leading knee while keeping other leg straight, push back to start.</p>
+            <video controls>
+                <source src="videos/side_lunge.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Legs">
+            <h2>Calf Raise</h2>
+            <p>Strength: Isolation exercise targeting calf muscles</p>
+            <p class="tutorial">Stand on edge, raise heels fully, lower slowly, keep balance.</p>
+            <video controls>
+                <source src="videos/calf_raise.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Chest">
+            <h2>Chest Fly</h2>
+            <p>Strength: Isolation exercise targeting chest muscles using dumbbells or cables</p>
+            <p class="tutorial">Lie on bench, open arms to sides, squeeze chest to bring weights together.</p>
+            <video controls>
+                <source src="videos/chest_fly.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Shoulders">
+            <h2>Overhead Press</h2>
+            <p>Strength: Shoulder press exercise targeting deltoids and triceps</p>
+            <p class="tutorial">Press weights overhead from shoulder height, lower slowly, keep core tight.</p>
+            <video controls>
+                <source src="videos/overhead_press.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Back">
+            <h2>Lat Pulldown</h2>
+            <p>Strength: Upper body pulling exercise targeting lats and biceps</p>
+            <p class="tutorial">Pull bar down to chest, keep shoulders back, release slowly.</p>
+            <video controls>
+                <source src="videos/lat_pulldown.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Arms">
+            <h2>Tricep Pushdown</h2>
+            <p>Strength: Isolation exercise using cable machine targeting triceps</p>
+            <p class="tutorial">Keep elbows close, push cable down fully, release slowly without swinging.</p>
+            <video controls>
+                <source src="videos/tricep_pushdown.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Chest">
+            <h2>Chest Press</h2>
+            <p>Strength: Machine-based chest exercise targeting pectorals and triceps</p>
+            <p class="tutorial">Push handles away from chest, control weight back slowly, keep elbows slightly bent.</p>
+            <video controls>
+                <source src="videos/chest_press.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Strength" data-group="Arms">
+            <h2>Preacher Curl</h2>
+            <p>Strength: Isolation exercise using preacher bench targeting biceps</p>
+            <p class="tutorial">Curl weight up slowly, lower controlled, keep upper arms fixed on bench.</p>
+            <video controls>
+                <source src="videos/preacher_curl.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- Core Exercises -->
+        <div class="exercise" data-type="Core">
+            <h2>Plank</h2>
+            <p>Core: Static core exercise targeting abdominals, lower back, and shoulders</p>
+            <p class="tutorial">Keep your body straight, engage core, hold position without letting hips sag or rise.</p>
+            <video controls>
+                <source src="videos/plank.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Core">
+            <h2>Crunch</h2>
+            <p>Core: Abdominal curl exercise targeting rectus abdominis</p>
+            <p class="tutorial">Keep lower back pressed to the floor, lift shoulders slightly off ground, avoid pulling neck.</p>
+            <video controls>
+                <source src="videos/crunch.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Core">
+            <h2>Russian Twist</h2>
+            <p>Core: Rotational core exercise targeting obliques</p>
+            <p class="tutorial">Sit slightly leaned back, rotate torso side to side while holding weight.</p>
+            <video controls>
+                <source src="videos/russian_twist.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Core">
+            <h2>Leg Raise</h2>
+            <p>Core: Lower abdominal exercise targeting hip flexors and lower abs</p>
+            <p class="tutorial">Lie flat, lift legs perpendicular to floor, lower slowly without touching ground.</p>
+            <video controls>
+                <source src="videos/leg_raise.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Core">
+            <h2>Side Plank</h2>
+            <p>Core: Static lateral core exercise targeting obliques and shoulders</p>
+            <p class="tutorial">Support body on one forearm, keep hips elevated, hold position without sagging.</p>
+            <video controls>
+                <source src="videos/side_plank.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Core">
+            <h2>Plank Shoulder Tap</h2>
+            <p>Core: Core stability exercise engaging shoulders and obliques</p>
+            <p class="tutorial">In plank, lift one hand to tap opposite shoulder, alternate without twisting hips.</p>
+            <video controls>
+                <source src="videos/plank_shoulder_tap.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        
+
+        <div class="exercise" data-type="Core">
+            <h2>Side Bend</h2>
+            <p>Core: Oblique-targeting exercise using side bending movement</p>
+            <p class="tutorial">Hold weight in one hand, bend sideways slowly, return upright, repeat both sides.</p>
+            <video controls>
+                <source src="videos/side_bend.mp4" type="video/mp4">
+            </video>
+        </div>
+
+       
+
+        <div class="exercise" data-type="Core">
+            <h2>Back Extension</h2>
+            <p>Core: Lower back strengthening exercise targeting erector spinae</p>
+            <p class="tutorial">Lie face down on hyperextension bench, lift torso using lower back, lower slowly.</p>
+            <video controls>
+                <source src="videos/back_extension.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- HIIT Exercises -->
+        <div class="exercise" data-type="HIIT">
+            <h2>Mountain Climbers</h2>
+            <p>HIIT: Full body cardio movement combining core and leg activation</p>
+            <p class="tutorial">Start in plank, drive knees toward chest alternately as fast as possible.</p>
+            <video controls>
+                <source src="videos/mountain_climbers.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="HIIT">
+            <h2>Burpees</h2>
+            <p>HIIT: High-intensity full body exercise combining squat, push-up, and jump</p>
+            <p class="tutorial">Drop into squat, kick feet back into plank, push-up, jump explosively up.</p>
+            <video controls>
+                <source src="videos/burpees.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="HIIT">
+            <h2>High Knees</h2>
+            <p>HIIT: Cardio-based exercise raising knees quickly for heart rate and endurance</p>
+            <p class="tutorial">Run in place, lift knees as high as possible, maintain fast pace.</p>
+            <video controls>
+                <source src="videos/high_knees.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="HIIT">
+            <h2>Jump Squat</h2>
+            <p>HIIT: Explosive leg exercise targeting quads, glutes, and calves</p>
+            <p class="tutorial">Squat down, jump as high as possible, land softly, repeat.</p>
+            <video controls>
+                <source src="videos/jump_squat.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="HIIT">
+            <h2>Medicine Ball Slam</h2>
+            <p>HIIT: Explosive full body exercise improving power and cardio</p>
+            <p class="tutorial">Lift ball overhead, slam to ground with force, squat to pick up, repeat.</p>
+            <video controls>
+                <source src="videos/medicine_ball_slam.mp4" type="video/mp4">
+            </video>
+        </div>
+
+      
+
+        <div class="exercise" data-type="HIIT">
+            <h2>Skater Jump</h2>
+            <p>HIIT: Lateral jump exercise targeting legs, glutes, and balance</p>
+            <p class="tutorial">Leap sideways from one foot to the other, swing arms for balance, land softly.</p>
+            <video controls>
+                <source src="videos/skater_jump.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="HIIT">
+            <h2>Bear Crawl</h2>
+            <p>HIIT: Full body dynamic exercise engaging core and upper body</p>
+            <p class="tutorial">Crawl on hands and feet, keep hips low, move forward and backward controlled.</p>
+            <video controls>
+                <source src="videos/bear_crawl.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- Flexibility Exercises -->
+        <div class="exercise" data-type="Flexibility">
+            <h2>World Greatest Stretch</h2>
+            <p>Flexibility: Lower body stretching exercise to improve flexibility and posture</p>
+            <p class="tutorial">Start in a lunge position, lower left knee, extend right leg, rotate torso to the right, hold, switch sides and repeat.</p>
+            <video controls>
+                <source src="videos/world_greatest_stretch.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Flexibility">
+            <h2>Hamstring Stretch</h2>
+            <p>Flexibility: Seated stretch targeting hamstrings and lower back</p>
+            <p class="tutorial">Reach for toes with straight legs, hold without bouncing, keep back straight.</p>
+            <video controls>
+                <source src="videos/hamstring_stretch.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Flexibility">
+            <h2>Shoulder Stretch</h2>
+            <p>Flexibility: Stretching exercise to improve shoulder mobility</p>
+            <p class="tutorial">Pull arm across chest gently, keep shoulders down, hold for 15–30 seconds.</p>
+            <video controls>
+                <source src="videos/shoulder_stretch.mp4" type="video/mp4">
+            </video>
+        </div>
+
+      
+
+        <div class="exercise" data-type="Flexibility">
+            <h2>Foam Roller</h2>
+            <p>Flexibility: Self-myofascial release exercise for muscle recovery</p>
+            <p class="tutorial">Roll over tight muscles slowly, pause on sore spots for tension release.</p>
+            <video controls>
+                <source src="videos/foam_roller.mp4" type="video/mp4">
+            </video>
+        </div>
+
+       
+
+       
+
+        <div class="exercise" data-type="Flexibility">
+            <h2>Standing Forward Bend</h2>
+            <p>Flexibility: Stretching exercise for hamstrings, lower back, and spine</p>
+            <p class="tutorial">Bend forward from hips, let arms hang, keep knees slightly bent if needed.</p>
+            <video controls>
+                <source src="videos/standing_forward_bend.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Flexibility">
+            <h2>Butterfly Pose</h2>
+            <p>Flexibility: Yoga stretch for lower back, hip flexors, and adductors</p>
+            <p class="tutorial">Sit tall, bring soles of feet together, drop knees out, and hold feet or ankles</p>
+            <video controls>
+                <source src="videos/butterfly_pose.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Flexibility">
+            <h2>Sphinx Stretch</h2>
+            <p>Flexibility: Spinal mobility stretch for flexibility</p>
+            <p class="tutorial">Round and arch back gently, moving with breath.</p>
+            <video controls>
+                <source src="videos/sphinx_stretch.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Flexibility">
+            <h2>Triceps Stretch</h2>
+            <p>Flexibility: Stretching exercise for upper arm and triceps</p>
+            <p class="tutorial">Lift one arm overhead, bend elbow, gently pull with opposite hand, hold.</p>
+            <video controls>
+                <source src="videos/triceps_stretch.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="exercise" data-type="Flexibility">
+            <h2>Chest Opener</h2>
+            <p>Flexibility: Stretching exercise for chest and shoulder mobility</p>
+            <p class="tutorial">Clasp hands behind back, lift chest gently, open shoulders, hold position.</p>
+            <video controls>
+                <source src="videos/chest_opener.mp4" type="video/mp4">
+            </video>
+        </div>
+
+
+
+        
+    </main>
+
+    <section class="contact-info-section">
+    <h2 class="contact-us-title">STAY MOTIVATED</h2>
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2026 Motiv8 Fitness Tracking. All rights reserved.</p>
+            <p style="margin-top: 8px; font-size: 13px; opacity: 0.8;">
+                Exercise videos courtesy of 
+                <a href="https://wger.de" target="_blank" style="color: white;">wger.de</a>, 
+                licensed under 
+                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="color: white;">CC BY 4.0</a>.
+            </p>
+        </div>
+    </footer>
+</section>
+
+    <script src="../global-auth.js"></script>
+    <script src="videos.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+exercisename,workouttype,description,input_type
+Push Up,Bodyweight,"Upper body pushing exercise targeting chest, shoulders, and triceps",reps
+Pull Up,Bodyweight,"Upper body pulling exercise targeting back and biceps",reps
+Squat,Strength,"Lower body compound exercise targeting quads, glutes, and hamstrings",reps
+Lunge,Strength,"Unilateral leg exercise targeting quads, glutes, and balance",reps
+Deadlift,Strength,"Full body compound lift targeting posterior chain muscles",reps
+Bench Press,Strength,"Upper body pushing exercise targeting chest, shoulders, and triceps",reps
+Bicep Curl,Strength,"Isolation exercise targeting the biceps muscles",reps
+Tricep Dip,Bodyweight,"Upper body pushing exercise targeting triceps and shoulders",reps
+Plank,Core,"Static core exercise targeting abdominals, lower back, and shoulders",duration
+Crunch,Core,"Abdominal curl exercise targeting rectus abdominis",reps
+Russian Twist,Core,"Rotational core exercise targeting obliques",reps
+Mountain Climbers,HIIT,"Full body cardio movement combining core and leg activation",duration
+Burpees,HIIT,"High-intensity full body exercise combining squat, push-up, and jump",reps
+Jump Rope,Cardio,"Cardiovascular endurance exercise for legs, arms, and coordination",duration
+Running,Cardio,"Cardiovascular endurance exercise targeting legs and heart",duration
+Cycling,Cardio,"Cardiovascular leg endurance exercise using stationary or road bike",duration
+Yoga Stretch,Flexibility,"Full body stretching exercise to improve flexibility and posture",duration
+Hamstring Stretch,Flexibility,"Seated stretch targeting hamstrings and lower back",duration
+Shoulder Stretch,Flexibility,"Stretching exercise to improve shoulder mobility",duration
+Cat-Cow Stretch,Flexibility,"Yoga exercise improving spinal flexibility and mobility",duration
+Glute Bridge,Bodyweight,"Hip extension exercise targeting glutes and lower back",reps
+Leg Raise,Core,"Lower abdominal exercise targeting hip flexors and lower abs",reps
+Side Plank,Core,"Static lateral core exercise targeting obliques and shoulders",duration
+High Knees,HIIT,"Cardio-based exercise raising knees quickly for heart rate and endurance",duration
+Jump Squat,HIIT,"Explosive leg exercise targeting quads, glutes, and calves",reps
+Side Lunge,Strength,"Lower body unilateral exercise targeting adductors and glutes",reps
+Calf Raise,Strength,"Isolation exercise targeting calf muscles",reps
+Chest Fly,Strength,"Isolation exercise targeting chest muscles using dumbbells or cables",reps
+Overhead Press,Strength,"Shoulder press exercise targeting deltoids and triceps",reps
+Lat Pulldown,Strength,"Upper body pulling exercise targeting lats and biceps",reps
+Leg Curl,Strength,"Isolation exercise targeting hamstrings",reps
+Leg Extension,Strength,"Isolation exercise targeting quadriceps",reps
+Front Kick,Bodyweight,"Dynamic leg exercise targeting hip flexors and core",reps
+Side Kick,Bodyweight,"Leg exercise targeting glutes, hips, and balance",reps
+Plank Shoulder Tap,Core,"Core stability exercise engaging shoulders and obliques",duration
+Bird Dog,Core,"Core and balance exercise targeting abs, lower back, and glutes",reps
+Foam Roller,Flexibility,"Self-myofascial release exercise for muscle recovery",duration
+Hip Flexor Stretch,Flexibility,"Stretching exercise targeting hip flexors and quads",duration
+Arm Circles,Flexibility,"Dynamic shoulder mobility exercise warming up the arms",duration
+Dumbbell Row,Strength,"Upper body pulling exercise targeting back and biceps",reps
+Incline Bench Press,Strength,"Chest pressing exercise targeting upper chest and shoulders",reps
+Arnold Press,Strength,"Shoulder exercise targeting deltoids and arms",reps
+Pull Over,Strength,"Upper body exercise targeting chest and lats",reps
+Seated Leg Press,Strength,"Lower body compound exercise targeting quads and glutes",reps
+Step Up,Bodyweight,"Leg exercise using elevated surface to strengthen quads and glutes",reps
+Wall Sit,Bodyweight,"Static leg exercise targeting quads and endurance",duration
+Hip Thrust,Strength,"Glute activation exercise targeting posterior chain",reps
+Tricep Kickback,Strength,"Isolation exercise targeting triceps muscles",reps
+Side Lateral Raise,Strength,"Shoulder isolation exercise targeting deltoids",reps
+Reverse Fly,Strength,"Upper back exercise targeting rear delts and rhomboids",reps
+Medicine Ball Slam,HIIT,"Explosive full body exercise improving power and cardio",reps
+Box Jump,HIIT,"Plyometric leg exercise improving explosiveness and endurance",reps
+Skater Jump,HIIT,"Lateral jump exercise targeting legs, glutes, and balance",reps
+Bear Crawl,HIIT,"Full body dynamic exercise engaging core and upper body",duration
+Sprint,Cardio,"High-intensity running exercise for speed and endurance",duration
+Rowing,Cardio,"Full body cardiovascular exercise using rowing machine",duration
+Elliptical,Cardio,"Low-impact cardiovascular exercise engaging legs and arms",duration
+Side Bend,Core,"Oblique-targeting exercise using side bending movement",reps
+Hollow Hold,Core,"Static core exercise strengthening abdominals and lower back",duration
+Back Extension,Core,"Lower back strengthening exercise targeting erector spinae",reps
+Standing Forward Bend,Flexibility,"Stretching exercise for hamstrings, lower back, and spine",duration
+Child`s Pose,Flexibility,"Yoga stretch for back, hips, and shoulders",duration
+Cat Stretch,Flexibility,"Spinal mobility stretch for flexibility",duration
+Triceps Stretch,Flexibility,"Stretching exercise for upper arm and triceps",duration
+Chest Opener,Flexibility,"Stretching exercise for chest and shoulder mobility",duration
+Pigeon Pose,Flexibility,"Yoga pose targeting hip flexibility and glutes",duration
+Wall Angels,Flexibility,"Shoulder mobility exercise improving posture",duration
+Tricep Pushdown,Strength,"Isolation exercise using cable machine targeting triceps",reps
+Chest Press,Strength,"Machine-based chest exercise targeting pectorals and triceps",reps
+Preacher Curl,Strength,"Isolation exercise using preacher bench targeting biceps",reps
+Cable Fly,Strength,"Chest isolation exercise using cable machine for chest activation",reps
+Seated Row,Strength,"Back pulling exercise using cable machine targeting lats and rear delts",reps
+Leg Press Machine,Strength,"Lower body exercise using machine targeting quads, glutes, and hamstrings",reps
+Shoulder Press Machine,Strength,"Machine shoulder press targeting deltoids and triceps",reps
+Lat Pulldown Machine,Strength,"Back exercise using machine targeting lats and biceps",reps
+Rest,,,duration
