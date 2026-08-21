@@ -1,6 +1,7 @@
 <?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
+    $isProduction = getenv("APP_ENV") === "production" || getenv("VERCEL") === "1";
+    ini_set('display_errors', $isProduction ? '0' : '1');
+    ini_set('display_startup_errors', $isProduction ? '0' : '1');
     error_reporting(E_ALL);
 
     $isHttps = !empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off";

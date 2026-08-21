@@ -79,8 +79,36 @@ Local config files are ignored by Git and should be used for secrets such as dat
 
 Do not commit real database credentials or API keys. Keep secrets in environment variables or ignored local config files instead.
 
+## Vercel Deployment
+
+The repository includes `vercel.json` and a guarded PHP entrypoint for Vercel's
+recommended `vercel-php` community runtime. The site root opens the Motiv8
+homepage, while the application's public PHP routes run through one function.
+
+Set these environment variables in the Vercel project before promoting the
+deployment to production:
+
+```text
+MYSQL_HOST
+MYSQL_PORT
+MYSQL_DATABASE
+MYSQL_USERNAME
+MYSQL_PASSWORD
+MYSQL_TIMEOUT_SECONDS
+```
+
+The Gemini chat additionally needs `GEMINI_API_KEY`. MongoDB profile mirroring
+is optional and uses `MONGODB_URI`, `MONGODB_DATABASE`, and
+`MONGODB_USERS_COLLECTION`.
+
+Use a hosted MySQL database that accepts connections from Vercel; `localhost`
+refers to the serverless function itself and cannot reach a database running on
+your computer.
+
 ## Notes
 
 - Uploaded profile images are stored under `Profile/uploads/`.
+- Vercel's function filesystem is temporary, so profile image uploads need an
+  object-storage service before that feature is production-safe.
 - The video library stores exercise videos under `Videos/videos/`.
 - Some features require a working database session and will not function from static file browsing alone.

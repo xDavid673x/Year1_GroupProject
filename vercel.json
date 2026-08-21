@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.9.0",
+      "maxDuration": 30,
+      "excludeFiles": "{.agent/**,.omx/**,.git/**,.DS_Store,.gitignore,.vercelignore,.env,.env.*,**/*.local.php,node_modules/**,vercel.json,DatabaseConfig/**,Login_FAQs/MERGE_MSG,Login_FAQs/api/test_chat_direct.php,Profile/test.php,Profile/uploads/**,fix_nav.py,README.md}"
+    }
+  },
+  "routes": [
+    {
+      "src": "^/$",
+      "dest": "/homepage/homepage.html"
+    },
+    {
+      "src": "^/(.+\\.php)$",
+      "dest": "/api/index.php?__vercel_file=$1"
+    },
+    {
+      "handle": "filesystem"
+    }
+  ]
+}

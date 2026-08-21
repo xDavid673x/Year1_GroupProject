@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . "/api/bootstrap.php"; 
+require __DIR__ . "/../Login_FAQs/api/bootstrap.php";
 
 header('Content-Type: application/json');
 
@@ -19,7 +19,7 @@ if (empty($gymName)) {
     exit;
 }
 
-require __DIR__ . "/api/mysql.php";
+require __DIR__ . "/../Login_FAQs/api/mysql.php";
 $pdo = mysql_pdo();
 
 $stmt = $pdo->prepare("UPDATE Profiles SET gym = :gym WHERE userid = :userid");
