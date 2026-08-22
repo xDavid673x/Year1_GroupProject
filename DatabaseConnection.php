@@ -89,12 +89,23 @@ function app_database_pdo(): PDO
         if (!is_file($db["ssl_ca"])) {
             throw new RuntimeException("The configured database CA certificate was not found.");
         }
-        if (!defined("PDO::MYSQL_ATTR_SSL_CA") || !defined("PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT")) {
+        if (class_exists("Pdo\\Mysql")) {
+            // PHP 8.5 moved the MySQL PDO constants to Pdo\\Mysql and
+            // emits deprecation output when the legacy PDO names are read.
+            $sslCaAttribute = \Pdo\Mysql::ATTR_SSL_CA;
+            $sslVerifyAttribute = \Pdo\Mysql::ATTR_SSL_VERIFY_SERVER_CERT;
+        } elseif (
+            defined("PDO::MYSQL_ATTR_SSL_CA")
+            && defined("PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT")
+        ) {
+            $sslCaAttribute = PDO::MYSQL_ATTR_SSL_CA;
+            $sslVerifyAttribute = PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT;
+        } else {
             throw new RuntimeException("The PDO MySQL TLS extension is unavailable.");
         }
 
-        $options[PDO::MYSQL_ATTR_SSL_CA] = $db["ssl_ca"];
-        $options[PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT] = $db["ssl_verify_server_cert"];
+        $options[$sslCaAttribute] = $db["ssl_ca"];
+        $options[$sslVerifyAttribute] = $db["ssl_verify_server_cert"];
     }
 
     $pdo = new PDO($dsn, $db["username"], $db["password"], $options);

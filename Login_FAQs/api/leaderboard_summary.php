@@ -38,12 +38,11 @@ try {
             u.username,
             COALESCE(NULLIF(TRIM(p.displayname), ''), u.username) AS display_name,
             COUNT(DISTINCT CASE
-                WHEN w.workoutdate BETWEEN :start_date AND :end_date THEN w.workoutID
+                WHEN w.workoutID IS NOT NULL THEN w.workoutID
                 ELSE NULL
             END) AS workouts_count,
             SUM(CASE
-                WHEN w.workoutdate BETWEEN :start_date AND :end_date
-                 AND (
+                WHEN (
                     (es.reps BETWEEN 1 AND 100 AND es.weight BETWEEN 1 AND 500)
                     OR (es.duration BETWEEN 1 AND 300)
                  )
@@ -51,14 +50,12 @@ try {
                 ELSE 0
             END) AS valid_sets,
             SUM(CASE
-                WHEN w.workoutdate BETWEEN :start_date AND :end_date
-                 AND es.duration BETWEEN 1 AND 300
+                WHEN es.duration BETWEEN 1 AND 300
                 THEN es.duration
                 ELSE 0
             END) AS total_duration_minutes,
             SUM(CASE
-                WHEN w.workoutdate BETWEEN :start_date AND :end_date
-                 AND es.reps BETWEEN 1 AND 100
+                WHEN es.reps BETWEEN 1 AND 100
                  AND es.weight BETWEEN 1 AND 500
                 THEN es.reps * es.weight
                 ELSE 0
@@ -68,6 +65,7 @@ try {
             ON p.userid = u.userid
         LEFT JOIN Workouts w
             ON w.userid = u.userid
+           AND w.workoutdate BETWEEN :start_date AND :end_date
         LEFT JOIN WorkoutExercises we
             ON we.workoutID = w.workoutID
         LEFT JOIN ExerciseSets es
