@@ -4,13 +4,18 @@ declare(strict_types=1);
 require __DIR__ . "/api/mysql.php";
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
-    $isHttps = !empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off";
+    $forwardedProto = strtolower((string) ($_SERVER["HTTP_X_FORWARDED_PROTO"] ?? ""));
+    $isHttps = (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off")
+        || $forwardedProto === "https";
     session_set_cookie_params([
         "httponly" => true,
         "secure" => $isHttps,
         "samesite" => "Lax",
     ]);
-    session_start();
+    // This page only reads authentication state. Release the hosted session
+    // row lock before running the leaderboard query so parallel page loads do
+    // not wait on one another.
+    session_start(["read_and_close" => true]);
 }
 
 $currentUserId = (int) ($_SESSION["user_id"] ?? 0);
@@ -81,12 +86,11 @@ try {
             COALESCE(NULLIF(TRIM(p.displayname), ''), u.username) AS display_name,
             COALESCE(p.streak, 0) AS streak,
             COUNT(DISTINCT CASE
-                WHEN w.workoutdate BETWEEN :start_date AND :end_date THEN w.workoutID
+                WHEN w.workoutID IS NOT NULL THEN w.workoutID
                 ELSE NULL
             END) AS workouts_count,
             SUM(CASE
-                WHEN w.workoutdate BETWEEN :start_date AND :end_date
-                 AND (
+                WHEN (
                     (es.reps BETWEEN 1 AND 100 AND es.weight BETWEEN 1 AND 500)
                     OR (es.duration BETWEEN 1 AND 300)
                  )
@@ -94,14 +98,12 @@ try {
                 ELSE 0
             END) AS valid_sets,
             SUM(CASE
-                WHEN w.workoutdate BETWEEN :start_date AND :end_date
-                 AND es.duration BETWEEN 1 AND 300
+                WHEN es.duration BETWEEN 1 AND 300
                 THEN es.duration
                 ELSE 0
             END) AS total_duration_minutes,
             SUM(CASE
-                WHEN w.workoutdate BETWEEN :start_date AND :end_date
-                 AND es.reps BETWEEN 1 AND 100
+                WHEN es.reps BETWEEN 1 AND 100
                  AND es.weight BETWEEN 1 AND 500
                 THEN es.reps * es.weight
                 ELSE 0
@@ -111,20 +113,21 @@ try {
             ON p.userid = u.userid
         LEFT JOIN Workouts w
             ON w.userid = u.userid
+           AND w.workoutdate BETWEEN :start_date AND :end_date
         LEFT JOIN WorkoutExercises we
             ON we.workoutID = w.workoutID
         LEFT JOIN ExerciseSets es
             ON es.workoutexerciseid = we.workoutexerciseid
         WHERE (
             :scope = 'global'
-            OR u.userid = :current_user_id
+            OR u.userid = :current_user_id_self
             OR EXISTS (
                 SELECT 1
                 FROM Friends f
                 WHERE f.friendstatus = 'friends'
                   AND (
-                    (f.userA = :current_user_id AND f.userB = u.userid)
-                    OR (f.userB = :current_user_id AND f.userA = u.userid)
+                    (f.userA = :current_user_id_a AND f.userB = u.userid)
+                    OR (f.userB = :current_user_id_b AND f.userA = u.userid)
                   )
             )
         )
@@ -136,7 +139,9 @@ try {
         ":start_date" => $startDate->format("Y-m-d"),
         ":end_date" => $today->format("Y-m-d"),
         ":scope" => $scope,
-        ":current_user_id" => $currentUserId,
+        ":current_user_id_self" => $currentUserId,
+        ":current_user_id_a" => $currentUserId,
+        ":current_user_id_b" => $currentUserId,
     ]);
 
     $rows = $stmt->fetchAll() ?: [];

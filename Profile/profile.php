@@ -4,7 +4,9 @@
     ini_set('display_startup_errors', $isProduction ? '0' : '1');
     error_reporting(E_ALL);
 
-    $isHttps = !empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off";
+    $forwardedProto = strtolower((string) ($_SERVER["HTTP_X_FORWARDED_PROTO"] ?? ""));
+    $isHttps = (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off")
+        || $forwardedProto === "https";
 
     session_set_cookie_params([
         'httponly' => true,
@@ -12,7 +14,10 @@
         'samesite' => 'Lax',
     ]);
 
-    session_start();
+    // Profile rendering only reads the session. Close it immediately so the
+    // TiDB-backed session handler cannot serialize the page's database query
+    // behind another request using the same browser session.
+    session_start(['read_and_close' => true]);
 
     $isAuthenticated = !empty($_SESSION['user_id']);
     $hasProfileData = false;
