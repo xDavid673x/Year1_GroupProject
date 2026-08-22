@@ -52,7 +52,11 @@
 
   async function fetchSessionUser() {
     try {
-      const payload = await apiRequest("me.php", { method: "GET", headers: {} });
+      const payload = await apiRequest("me.php", {
+        method: "GET",
+        headers: {},
+        cache: "no-store",
+      });
       return payload.authenticated ? payload.user : null;
     } catch {
       return null;
@@ -162,6 +166,7 @@
       try {
         setMessage(message, "Logging in...");
         await apiRequest("login.php", { method: "POST", body: JSON.stringify({ email, password }) });
+        sessionStorage.setItem(AUTH_STATE_KEY, "in");
         setMessage(message, "Login successful. Redirecting...");
         window.location.href = POST_LOGIN_REDIRECT;
       } catch (error) {
@@ -186,6 +191,7 @@
       try {
         setMessage(message, "Creating account...");
         await apiRequest("register.php", { method: "POST", body: JSON.stringify({ username, email, PhoneNum, password, confirmPassword }) });
+        sessionStorage.setItem(AUTH_STATE_KEY, "in");
         setMessage(message, "Account created. Redirecting...");
         window.location.href = POST_LOGIN_REDIRECT;
       } catch (error) {
