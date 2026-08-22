@@ -40,10 +40,11 @@ img/                 Shared image assets
 1. Install a local PHP/MySQL environment such as XAMPP, MAMP, WAMP, or the PHP built-in server with a MySQL server.
 2. Clone the repository.
 3. Copy `DatabaseInit.local.example.php` to `DatabaseInit.local.php` and add your local database credentials.
-4. Copy `Login_FAQs/api/config.local.example.php` to `Login_FAQs/api/config.local.php` and add your local API/database settings.
-5. Create the database tables using the scripts in `DatabaseConfig/` and `Login_FAQs/api/schema.sql`.
-6. Import the exercise seed data from `DatabaseConfig/workouts.csv` by running `DatabaseConfig/PopulateExercises.php`.
-7. Serve the project from the repository root and open `homepage/homepage.html`.
+4. Optionally copy `Login_FAQs/api/config.local.example.php` to
+   `Login_FAQs/api/config.local.php` for local MongoDB or Gemini settings.
+5. Set the local database credentials, then run `php DatabaseConfig/migrate.php`.
+   This creates every application table and imports `DatabaseConfig/workouts.csv`.
+6. Serve the project from the repository root and open `homepage/homepage.html`.
 
 Example using PHP's built-in server:
 
@@ -85,8 +86,17 @@ The repository includes `vercel.json` and a guarded PHP entrypoint for Vercel's
 recommended `vercel-php` community runtime. The site root opens the Motiv8
 homepage, while the application's public PHP routes run through one function.
 
-Set these environment variables in the Vercel project before promoting the
-deployment to production:
+The TiDB Cloud Marketplace integration supplies these variables automatically:
+
+```text
+TIDB_HOST
+TIDB_PORT
+TIDB_DATABASE
+TIDB_USER
+TIDB_PASSWORD
+```
+
+For another MySQL host, set the equivalent variables below:
 
 ```text
 MYSQL_HOST
@@ -96,6 +106,10 @@ MYSQL_USERNAME
 MYSQL_PASSWORD
 MYSQL_TIMEOUT_SECONDS
 ```
+
+Hosted TiDB connections use verified TLS with the bundled ISRG Root X1 CA.
+On Vercel, PHP sessions are stored in the `PhpSessions` database table so login
+state survives function restarts.
 
 The Gemini chat additionally needs `GEMINI_API_KEY`. MongoDB profile mirroring
 is optional and uses `MONGODB_URI`, `MONGODB_DATABASE`, and

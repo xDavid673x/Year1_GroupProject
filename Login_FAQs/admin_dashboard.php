@@ -8,8 +8,6 @@ require __DIR__ . '/api/mysql.php';
 // Since this is a UI page, we must override it back to HTML.
 header("Content-Type: text/html; charset=utf-8");
 
-session_start();
-
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: login.html");
     exit;

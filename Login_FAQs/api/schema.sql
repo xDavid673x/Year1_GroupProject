@@ -1,9 +1,2 @@
-CREATE TABLE IF NOT EXISTS Users (
-  userid INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(120) NOT NULL,
-  email VARCHAR(255) NOT NULL UNIQUE,
-  passwordhash VARCHAR(255) NOT NULL,
-  PhoneNum VARCHAR(30) NOT NULL,
-  role VARCHAR(20) NOT NULL DEFAULT 'member',
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+-- Deprecated: use ../../DatabaseConfig/schema.sql and
+-- ../../DatabaseConfig/migrate.php for the complete, idempotent schema.

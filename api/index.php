@@ -64,6 +64,12 @@ if (
     exit;
 }
 
+require_once $projectRoot . "/DatabaseConnection.php";
+if (app_database_session_enabled() && session_status() === PHP_SESSION_NONE) {
+    require_once $projectRoot . "/DatabaseSessionHandler.php";
+    session_set_save_handler(new DatabaseSessionHandler(), true);
+}
+
 $scriptName = "/" . $requestedFile;
 $queryString = http_build_query($_GET);
 $_SERVER["SCRIPT_FILENAME"] = $target;

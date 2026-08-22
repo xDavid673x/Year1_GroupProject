@@ -4,8 +4,6 @@ declare(strict_types=1);
 require __DIR__ . "/bootstrap.php";
 require __DIR__ . "/mysql.php";
 
-session_start();
-
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     json_response(["error" => "Unauthorized"], 403);
 }

@@ -1,16 +1,10 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . "/../../DatabaseConnection.php";
+
 $config = [
-    "mysql" => [
-        "host" => getenv("MYSQL_HOST") ?: "localhost",
-        "port" => (int) (getenv("MYSQL_PORT") ?: 3306),
-        "database" => getenv("MYSQL_DATABASE") ?: "motiv8",
-        "username" => getenv("MYSQL_USERNAME") ?: "root",
-        "password" => getenv("MYSQL_PASSWORD") ?: "",
-        "charset" => "utf8mb4",
-        "timeout_seconds" => (int) (getenv("MYSQL_TIMEOUT_SECONDS") ?: 5),
-    ],
+    "mysql" => app_database_config(),
     "mongodb" => [
         "uri" => getenv("MONGODB_URI") ?: "",
         "database" => getenv("MONGODB_DATABASE") ?: "gymapp",
@@ -45,6 +39,8 @@ $localConfigPath = __DIR__ . "/config.local.php";
 if (is_file($localConfigPath)) {
     $localConfig = require $localConfigPath;
     if (is_array($localConfig)) {
+        // DatabaseInit.local.php is the single local MySQL override source.
+        unset($localConfig["mysql"]);
         $config = array_replace_recursive($config, $localConfig);
     }
 }

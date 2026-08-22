@@ -10,6 +10,7 @@
 *.local.php
 node_modules/
 DatabaseConfig/
+Login_FAQs/api/schema.sql
 Login_FAQs/MERGE_MSG
 Login_FAQs/api/test_chat_direct.php
 Profile/test.php

@@ -13,7 +13,6 @@ $email = strtolower(trim((string) ($data["email"] ?? "")));
 $password = (string) ($data["password"] ?? "");
 $confirmPassword = (string) ($data["confirmPassword"] ?? "");
 $PhoneNum = trim((string) ($data["PhoneNum"] ?? $data["phoneNum"] ?? ""));
-$passwordhash = password_hash($password, PASSWORD_DEFAULT);
 
 if (strlen($username) < 2) {
     json_response(["error" => "Please enter a username."], 422);
@@ -35,8 +34,11 @@ if ($PhoneNum === "") {
     json_response(["error" => "Please enter your phone number."], 422);
 }
 
+$passwordhash = password_hash($password, PASSWORD_DEFAULT);
+
 try {
     $pdo = mysql_pdo();
+    $pdo->beginTransaction();
     $stmt = $pdo->prepare(
         "INSERT INTO Users (Username, Email, PasswordHash, PhoneNum) VALUES (:username, :email, :passwordhash, :PhoneNum)"
     );
@@ -48,13 +50,27 @@ try {
     ]);
 
     $userId = (int) $pdo->lastInsertId();
+    $profile = $pdo->prepare(
+        "INSERT INTO Profiles (userid, displayname) VALUES (:userid, :displayname)"
+    );
+    $profile->execute([
+        ":userid" => $userId,
+        ":displayname" => $username,
+    ]);
+    $pdo->commit();
 } catch (PDOException $e) {
+    if (isset($pdo) && $pdo instanceof PDO && $pdo->inTransaction()) {
+        $pdo->rollBack();
+    }
     if ($e->getCode() === "23000") {
-        json_response(["error" => "An account with this email already exists."], 409);
+        json_response(["error" => "That email or username is already registered."], 409);
     }
     json_response(["error" => "Failed to create account."], 500);
 } catch (Throwable $e) {
-    json_response(["error" => $e->getMessage()], 500);
+    if (isset($pdo) && $pdo instanceof PDO && $pdo->inTransaction()) {
+        $pdo->rollBack();
+    }
+    json_response(["error" => "Failed to create account."], 500);
 }
 
 try {
