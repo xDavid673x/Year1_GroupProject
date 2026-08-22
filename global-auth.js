@@ -1,7 +1,18 @@
 (function () {
   const AUTH_STATE_KEY = "auth_state"; 
+  const AUTH_READY_EVENT = "motiv8:auth-ready";
   const API_BASE = "../Login_FAQs/api";
   const POST_LOGIN_REDIRECT = "../homepage/homepage.html";
+
+  function publishAuthState(user) {
+    window.motiv8AuthUser = user || null;
+    window.dispatchEvent(new CustomEvent(AUTH_READY_EVENT, {
+      detail: {
+        authenticated: Boolean(user),
+        user: user || null,
+      },
+    }));
+  }
 
   function getCurrentPage() {
     return window.location.pathname.split("/").pop() || "homepage.html";
@@ -393,7 +404,11 @@
     
     const page = getCurrentPage();
     const user = await fetchSessionUser();
-    
+
+    // Pages with inline auth gates can subscribe to this single result. This
+    // prevents two simultaneous /me.php requests from disagreeing while the
+    // database-backed session is being read after a login redirect.
+    publishAuthState(user);
     updateNavAuthButton(user);
 
     if (page === "login.html" && user) {

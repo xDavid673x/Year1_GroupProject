@@ -592,6 +592,17 @@ const contactForm = document.getElementById("contactForm");
 
         setExerciseLaunchLocked(true);
 
+        // global-auth.js performs the canonical session lookup for the page.
+        // Listen for that result instead of allowing a second concurrent
+        // request to overwrite an authenticated state with a stale response.
+        let canonicalAuthStateReceived = false;
+        window.addEventListener("motiv8:auth-ready", (event) => {
+            canonicalAuthStateReceived = true;
+            setExerciseLaunchLocked(!event.detail?.authenticated);
+        }, { once: true });
+
+        // Keep a small fallback for a script/network failure. It is ignored
+        // once the canonical result has arrived.
         fetch("../Login_FAQs/api/me.php", {
             method: "GET",
             credentials: "include",
@@ -607,10 +618,14 @@ const contactForm = document.getElementById("contactForm");
                 return { ok: response.ok, payload };
             })
             .then(({ ok, payload }) => {
-                setExerciseLaunchLocked(!ok || !payload.authenticated);
+                if (!canonicalAuthStateReceived) {
+                    setExerciseLaunchLocked(!ok || !payload.authenticated);
+                }
             })
             .catch(() => {
-                setExerciseLaunchLocked(true);
+                if (!canonicalAuthStateReceived) {
+                    setExerciseLaunchLocked(true);
+                }
             });
     </script>
     <script src="../global-auth.js"></script>
