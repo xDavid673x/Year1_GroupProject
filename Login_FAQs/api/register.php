@@ -38,7 +38,15 @@ $passwordhash = password_hash($password, PASSWORD_DEFAULT);
 
 try {
     $pdo = mysql_pdo();
-    $pdo->beginTransaction();
+    // The database session handler may already have an open transaction for
+    // the session row lock. Reuse it instead of attempting a nested PDO
+    // transaction, which TiDB rejects with "already an active transaction".
+    $startedTransaction = false;
+    if (!$pdo->inTransaction()) {
+        $pdo->beginTransaction();
+        $startedTransaction = true;
+    }
+
     $stmt = $pdo->prepare(
         "INSERT INTO Users (Username, Email, PasswordHash, PhoneNum) VALUES (:username, :email, :passwordhash, :PhoneNum)"
     );
@@ -57,7 +65,9 @@ try {
         ":userid" => $userId,
         ":displayname" => $username,
     ]);
-    $pdo->commit();
+    if ($startedTransaction) {
+        $pdo->commit();
+    }
 } catch (PDOException $e) {
     if (isset($pdo) && $pdo instanceof PDO && $pdo->inTransaction()) {
         $pdo->rollBack();
@@ -65,11 +75,23 @@ try {
     if ($e->getCode() === "23000") {
         json_response(["error" => "That email or username is already registered."], 409);
     }
+    error_log(sprintf(
+        "[register.php] %s in %s:%d",
+        $e->getMessage(),
+        $e->getFile(),
+        $e->getLine()
+    ));
     json_response(["error" => "Failed to create account."], 500);
 } catch (Throwable $e) {
     if (isset($pdo) && $pdo instanceof PDO && $pdo->inTransaction()) {
         $pdo->rollBack();
     }
+    error_log(sprintf(
+        "[register.php] %s in %s:%d",
+        $e->getMessage(),
+        $e->getFile(),
+        $e->getLine()
+    ));
     json_response(["error" => "Failed to create account."], 500);
 }
 

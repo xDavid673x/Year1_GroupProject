@@ -19,7 +19,13 @@ if ($workoutName === '' || $date === '' || $time === '' || empty($exercises)) {
 }
 
 try {
-    $pdo->beginTransaction();
+    // The hosted database session handler can already hold a transaction for
+    // the session lock. PDO does not support starting a nested transaction.
+    $startedTransaction = false;
+    if (!$pdo->inTransaction()) {
+        $pdo->beginTransaction();
+        $startedTransaction = true;
+    }
 
     $sql = "INSERT INTO Workouts (userid, workoutname, workoutbio, workoutdate, workouttime, workouttype)
             VALUES (:userid, :name, :bio, :date, :time, :type)";
@@ -91,11 +97,15 @@ try {
         }
     }
 
-    $pdo->commit();
+    if ($startedTransaction) {
+        $pdo->commit();
+    }
     header("Location: viewWorkouts.php");
     exit;
 } catch (Exception $e) {
-    $pdo->rollBack();
+    if (($startedTransaction ?? false) && $pdo->inTransaction()) {
+        $pdo->rollBack();
+    }
     die("Error saving workout: " . $e->getMessage());
 }
 ?>
