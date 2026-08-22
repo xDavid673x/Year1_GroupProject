@@ -590,45 +590,19 @@ const contactForm = document.getElementById("contactForm");
             }
         });
 
-        setExerciseLaunchLocked(true);
+        // Match the navigation's immediate post-login state while the hosted
+        // session lookup completes. The server-backed auth event below remains
+        // authoritative and will relock the card if the session has expired.
+        setExerciseLaunchLocked(sessionStorage.getItem("auth_state") !== "in");
 
         // global-auth.js performs the canonical session lookup for the page.
-        // Listen for that result instead of allowing a second concurrent
-        // request to overwrite an authenticated state with a stale response.
-        let canonicalAuthStateReceived = false;
+        // Listen for that one result instead of starting a second concurrent
+        // request that can leave the navigation and workout card out of sync.
         window.addEventListener("motiv8:auth-ready", (event) => {
-            canonicalAuthStateReceived = true;
             setExerciseLaunchLocked(!event.detail?.authenticated);
         }, { once: true });
-
-        // Keep a small fallback for a script/network failure. It is ignored
-        // once the canonical result has arrived.
-        fetch("../Login_FAQs/api/me.php", {
-            method: "GET",
-            credentials: "include",
-            headers: { Accept: "application/json" },
-        })
-            .then(async (response) => {
-                let payload = {};
-                try {
-                    payload = await response.json();
-                } catch {
-                    payload = {};
-                }
-                return { ok: response.ok, payload };
-            })
-            .then(({ ok, payload }) => {
-                if (!canonicalAuthStateReceived) {
-                    setExerciseLaunchLocked(!ok || !payload.authenticated);
-                }
-            })
-            .catch(() => {
-                if (!canonicalAuthStateReceived) {
-                    setExerciseLaunchLocked(true);
-                }
-            });
     </script>
-    <script src="../global-auth.js"></script>
+    <script src="../global-auth.js?v=2"></script>
     
 
 </body>
